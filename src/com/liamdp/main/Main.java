@@ -20,20 +20,19 @@ public class Main {
             contents = FileManager.grabContents(fileName);
         } catch (FileNotFoundException e) {
             System.out.println("Not able to find file, trying the grabber.");
-        }
-
-        try {
-            contents = Grabber.grab(fileName);
-        } catch (FileNotFoundException | URISyntaxException e) {
-            System.err.println("Grabber was not able to find the file.");
+            try {
+                contents = Grabber.grab(fileName);
+            } catch (FileNotFoundException | URISyntaxException ex) {
+                System.err.println("Grabber was not able to find the file.");
+            }
         }
 
 
         ArrayList<String> parsedCoods = Parser.parse(contents);
 
-        for (String coord : parsedCoods) {
-            System.out.println(coord);
-        }
+//        for (String coord : parsedCoods) {
+//            System.out.println(coord);
+//        }
 
         try {
             FileManager.writeFile(parsedCoods);

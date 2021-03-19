@@ -1,7 +1,6 @@
 package com.liamdp.fileManager;
 
 import java.io.*;
-import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -29,10 +28,14 @@ public class FileManager {
             System.out.println("File already exists.");
         }
         BufferedWriter writer = new BufferedWriter(new FileWriter(file));
+        int counter = 1;
         for (String coord : coords) {
+            System.out.printf("Writing coord %s: %s%n", counter, coord);
             writer.write(coord);
             writer.newLine();
+            counter++;
         }
+        writer.close();
     }
 
 }
