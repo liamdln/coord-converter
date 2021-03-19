@@ -27,6 +27,7 @@ public class Parser {
                     decCounter = 0;
                 }
             }
+            stringBuilder.append("/");
             parsedCoords.add(stringBuilder.toString());
 
         }
